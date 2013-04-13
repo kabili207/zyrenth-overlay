@@ -1,0 +1,42 @@
+--- lprof-1.11.3.1.orig/src/checkerqt/profilecheckerbase.ui	2005-11-19 14:04:03.000000000 -0800
++++ lprof-1.11.3.1/src/checkerqt/profilecheckerbase.ui	2006-04-17 11:48:20.000000000 -0700
+@@ -994,10 +994,6 @@
+     <slot>slotUpdateLabels()</slot>
+     <slot>slotSelectScanoutIT8()</slot>
+     <slot>slotHelpButton()</slot>
+ </slots>
+ <layoutdefaults spacing="6" margin="11"/>
+-<includehints>
+-    <includehint>it8selector.h</includehint>
+-    <includehint>iccprofileselector.h</includehint>
+-</includehints>
+ </UI>
+--- lprof-1.11.3.1.orig/src/lprofqt/lprofmainbase.ui	2006-02-17 14:47:42.000000000 -0800
++++ lprof-1.11.3.1/src/lprofqt/lprofmainbase.ui	2006-04-17 11:47:51.000000000 -0700
+@@ -1764,13 +1764,6 @@
+ </slots>
+ <functions>
+     <function access="private" specifier="non virtual">init()</function>
+ </functions>
+ <layoutdefaults spacing="6" margin="11"/>
+-<includehints>
+-    <includehint>it8selector.h</includehint>
+-    <includehint>it8fileselector.h</includehint>
+-    <includehint>iccprofileselector.h</includehint>
+-    <includehint>iccprofileselector.h</includehint>
+-    <includehint>it8selector.h</includehint>
+-</includehints>
+ </UI>
+--- lprof-1.11.3.1.orig/src/reference_inst_qt/installreffilebase.ui	2005-10-15 17:33:41.000000000 -0700
++++ lprof-1.11.3.1/src/reference_inst_qt/installreffilebase.ui	2006-04-17 11:48:07.000000000 -0700
+@@ -383,10 +383,6 @@
+     <slot>slotValueChanged()</slot>
+     <slot>slotOK()</slot>
+     <slot>slotHelpButton()</slot>
+ </slots>
+ <layoutdefaults spacing="6" margin="11"/>
+-<includehints>
+-    <includehint>it8selector.h</includehint>
+-    <includehint>it8selector.h</includehint>
+-</includehints>
+ </UI>

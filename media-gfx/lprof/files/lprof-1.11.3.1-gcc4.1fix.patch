@@ -1,0 +1,11 @@
+--- lprof-1.11.3.1/src/lprofqt/lprofmain.h.orig	2006-03-07 18:05:24.000000000 -0500
++++ lprof-1.11.3.1/src/lprofqt/lprofmain.h	2006-03-07 18:06:56.000000000 -0500
+@@ -399,7 +399,7 @@
+     void init_targetlist();
+     virtual void slotInstallReference();
+     virtual void tabChanged();
+-    virtual void lprofMain::OutputFileNameChangedMon();
++    virtual void OutputFileNameChangedMon();
+     virtual void getConfigParmsandID(QString profile);
+ };
+ 

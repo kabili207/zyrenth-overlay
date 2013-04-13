@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/opt/AirSDK/bin/adl -nodebug "/opt/AirApps/$1/META-INF/AIR/application.xml" "/opt/AirApps/$1"

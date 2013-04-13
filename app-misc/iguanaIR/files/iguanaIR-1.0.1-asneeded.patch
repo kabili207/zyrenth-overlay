@@ -1,0 +1,29 @@
+diff -rupN iguanaIR-1.0.1/drivers/Makefile.in iguanaIR-1.0.1.new/drivers/Makefile.in
+--- iguanaIR-1.0.1/drivers/Makefile.in	2010-02-17 21:48:02.000000000 -0500
++++ iguanaIR-1.0.1.new/drivers/Makefile.in	2010-11-29 18:23:56.000000000 -0500
+@@ -14,7 +14,7 @@ libusb.so: libusb.c $(LISTS) Makefile
+ 		$(LISTS) -o $@
+ 
+ libusbpre1.so: libusbpre1.c $(LISTS) Makefile
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(SHAREARG) $(LDFLAGS) -lusb $< \
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(SHAREARG) $(LDFLAGS) -lusb-1.0 $< \
+ 		$(LISTS) -o $@
+ 
+ .PHONY: clean
+diff -rupN iguanaIR-1.0.1/Makefile.in iguanaIR-1.0.1.new/Makefile.in
+--- iguanaIR-1.0.1/Makefile.in	2010-11-20 19:28:34.000000000 -0500
++++ iguanaIR-1.0.1.new/Makefile.in	2010-11-29 18:20:08.000000000 -0500
+@@ -30,10 +30,10 @@ igdaemon: daemon.o \
+           list.o protocol-versions.o pipes.o dataPackets.o compat-unix.o \
+           support.c $(OSSUPPORT)
+ 	$(CC) $(EXPORTARGS) $(CPPFLAGS) $(CFLAGS) -DSUPPORT_EXPORTS \
+-              $(LDFLAGS) $^ -lpopt -lusb -lpthread -ldl $(LIBNAME) -o $@
++              $(LDFLAGS) $^ -lpopt -lusb-1.0 -lpthread -ldl $(LIBNAME) -o $@
+ 
+ igclient: client.o list.o support.o compat-unix.o
+-	$(CC) $(LDFLAGS) $^ -lpopt $(LIBNAME) -o $@
++	$(CC) $(LDFLAGS) $^ -o $@ $(LIBNAME) -lpopt
+ 
+ %.o: %.c Makefile iguanaIR.h
+ 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+

@@ -1,0 +1,61 @@
+--- Makefile.in.orig	2011-01-01 20:20:56.768474278 -0800
++++ Makefile.in	2011-01-01 20:29:57.657991588 -0800
+@@ -30,10 +30,10 @@ igdaemon: daemon.o \
+           list.o protocol-versions.o pipes.o dataPackets.o compat-unix.o \
+           support.c $(OSSUPPORT)
+ 	$(CC) $(EXPORTARGS) $(CPPFLAGS) $(CFLAGS) -DSUPPORT_EXPORTS \
+-              $(LDFLAGS) $^ -lpopt -lusb -lpthread -ldl $(LIBNAME) -o $@
++              $(LDFLAGS) $^ -o $@ $(LIBNAME) -lpopt -lusb -lpthread -ldl
+ 
+ igclient: client.o list.o support.o compat-unix.o
+-	$(CC) $(LDFLAGS) $^ -lpopt $(LIBNAME) -o $@
++	$(CC) $(LDFLAGS) $^ -o $@ $(LIBNAME) -lpopt
+ 
+ %.o: %.c Makefile iguanaIR.h
+ 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+@@ -82,10 +82,6 @@ endif
+ # change ownership unless we're building an rpm
+ ifeq ($(RPM_OS)$(DARWIN),)
+   SETOWNER=--owner iguanair --group iguanair
+-install: adduser
+-.PHONY: adduser
+-adduser:
+-	/usr/sbin/useradd -u 213 -c "Iguanaworks IR Daemon" -d / -s /sbin/nologin iguanair 2>/dev/null || true
+ 
+ uninstall: deluser
+ .PHONY: deluser
+--- iguanaIR.init.orig	2011-01-01 19:08:19.370168725 -0800
++++ iguanaIR.init	2011-01-01 19:08:28.626068115 -0800
+@@ -68,6 +68,12 @@ elif [ "$DISTRO" = "gentoo" ]; then
+     {
+         eend $*
+     }
++    # HACK: Provide a fake pidofproc(). This smells the same as long as nobody
++    # use any advanced options or check for specific exit codes.
++    pidofproc()
++    {
++        pidof $*
++    }
+ else
+     if [ "$DISTRO" != "debian" -a "$DISTRO" != "ubuntu" ]; then
+         echo "WARNING: failed to recognize distro, defaulting to Debian."
+--- drivers/Makefile.in.orig	2011-01-01 20:39:00.554402996 -0800
++++ drivers/Makefile.in	2011-01-01 20:40:07.823007606 -0800
+@@ -10,12 +10,12 @@ endif
+ all: $(DRIVERS)
+ 
+ libusb.so: libusb.c $(LISTS) Makefile
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(SHAREARG) $(LDFLAGS) -lusb-1.0 $< \
+-		$(LISTS) -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(SHAREARG) $(LDFLAGS) $< \
++		$(LISTS) -lusb-1.0 -o $@
+ 
+ libusbpre1.so: libusbpre1.c $(LISTS) Makefile
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(SHAREARG) $(LDFLAGS) -lusb $< \
+-		$(LISTS) -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(SHAREARG) $(LDFLAGS) $< \
++		$(LISTS) -lusb -o $@
+ 
+ .PHONY: clean
+ clean:
+
