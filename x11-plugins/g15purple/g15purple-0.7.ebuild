@@ -9,7 +9,7 @@ inherit multilib git-2
 DESCRIPTION="detox safely removes spaces and strange characters from filenames"
 HOMEPAGE="http://www.zyrenth.com/"
 EGIT_REPO_URI="git://zyrenth.com/g15-purple.git"
-EGIT_COMMIT="b8f73a318ae63791a1b16debc96d4dddaea47478"
+EGIT_COMMIT="3f7562fab10ec48c6011a71568b5620d3de1717a"
 SRC_URI=""
 
 LICENSE="GPL-2"
