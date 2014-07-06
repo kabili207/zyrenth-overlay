@@ -22,7 +22,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
-	=dev-libs/openssl-1.0.0*
+	=dev-libs/openssl-1.0.1*
 	media-libs/alsa-lib
 	sys-apps/dbus
 	sys-libs/libcap
