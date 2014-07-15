@@ -65,7 +65,7 @@ src_prepare() {
 		)
 		local o_l
 		for o_l in ${linguas}; do
-			if ! has ${o_l} ${LINGUAS}; then
+			if ! has ${o_l/-/_} ${LINGUAS}; then
 				rm ${o_l_path}/${o_l}.pak || die
 			fi
 		done
