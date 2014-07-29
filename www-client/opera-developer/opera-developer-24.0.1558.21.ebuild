@@ -3,7 +3,12 @@
 # $Header: $
 
 EAPI=5
-inherit multilib unpacker
+
+CHROMIUM_LANGS="af ar az be bg bn ca cs da de el en_GB en_US es_LA es fi fr_CA
+	fr fy gd hi hr hu id it ja kk ko lt lv me mk ms nb nl nn pa pl pt_BR
+	pt_PT ro ru sk sr sv sw ta te th tl tr uk uz vi zh_CN zh_TW zu"
+
+inherit chromium multilib unpacker
 
 DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="http://www.opera.com/"
@@ -22,6 +27,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	=dev-libs/openssl-1.0.1*
+	gnome-base/gconf:2
 	media-libs/alsa-lib
 	sys-apps/dbus
 	sys-libs/libcap
@@ -43,6 +49,7 @@ RDEPEND="
 
 QA_PREBUILT="*"
 S=${WORKDIR}
+OPERA_HOME="usr/$(get_libdir)/${PN}"
 
 src_unpack() {
 	unpack_deb ${A}
@@ -57,18 +64,9 @@ src_prepare() {
 	rm usr/share/doc/${PN}/copyright || die
 	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
 
-	if [[ ${LINGUAS} ]]; then
-		use amd64 && local o_l_path="usr/$(get_libdir)/${PN}/localization/"
-		local linguas=$(
-			echo ${o_l_path}*.pak | sed -e "s|${o_l_path}||g;s|.pak||g" || die
-		)
-		local o_l
-		for o_l in ${linguas}; do
-			if ! has ${o_l/-/_} ${LINGUAS}; then
-				rm ${o_l_path}/${o_l}.pak || die
-			fi
-		done
-	fi
+	pushd "${OPERA_HOME}/localization" > /dev/null || die
+	chromium_remove_language_paks
+	popd > /dev/null || die
 
 	sed -i \
 		-e 's|^TargetEnvironment|X-&|g' \
