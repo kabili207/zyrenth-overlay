@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>zyrenth</name>
+    <description lang="en">Personal overlay</description>
+    <homepage>http://www.zyrenth.com/</homepage>
+    <owner type="person">
+      <email>kabili@zyrenth.com</email>
+      <name>Andrew Nagle</name>
+    </owner>
+    <source type="git">git://zyrenth.com/zyrenth-overlay.git</source>
+    <feed>http://git.zyrenth.com/zyrenth-overlay.git/atom</feed>
+    <feed>http://git.zyrenth.com/zyrenth-overlay.git/rss</feed>
+  </repo>
+</repositories>
