@@ -1,0 +1,7 @@
+USER=openhab
+
+GROUP=openhab
+
+HTTP_PORT=8081
+
+HTTPS_PORT=8443

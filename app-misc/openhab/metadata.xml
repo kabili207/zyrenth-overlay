@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>flo@geekplace.eu</email>
+    <name>Florian Schmaus</name>
+  </maintainer>
+  <use>
+    <flag name="openhab_action_homematic">
+    </flag>
+    <flag name="openhab_action_mail">
+    </flag>
+    <flag name="openhab_action_nma">
+    </flag>
+    <flag name="openhab_action_openwebif">
+    </flag>
+    <flag name="openhab_action_prowl">
+    </flag>
+    <flag name="openhab_action_pushover">
+    </flag>
+    <flag name="openhab_action_squeezebox">
+    </flag>
+    <flag name="openhab_action_twitter">
+    </flag>
+    <flag name="openhab_action_xbmc">
+    </flag>
+    <flag name="openhab_action_xmpp">
+    </flag>
+    <flag name="openhab_action_xpl">
+    </flag>
+    <flag name="openhab_binding_alarmdecoder">
+    </flag>
+    <flag name="openhab_binding_anel">
+    </flag>
+    <flag name="openhab_binding_asterisk">
+    </flag>
+    <flag name="openhab_binding_astro">
+    </flag>
+    <flag name="openhab_binding_benqprojector">
+    </flag>
+    <flag name="openhab_binding_bluetooth">
+    </flag>
+    <flag name="openhab_binding_bticino">
+    </flag>
+    <flag name="openhab_binding_comfoair">
+    </flag>
+    <flag name="openhab_binding_configadmin">
+    </flag>
+    <flag name="openhab_binding_cups">
+    </flag>
+    <flag name="openhab_binding_daikin">
+    </flag>
+    <flag name="openhab_binding_davis">
+    </flag>
+    <flag name="openhab_binding_digitalstrom">
+    </flag>
+    <flag name="openhab_binding_dmx">
+    </flag>
+    <flag name="openhab_binding_dmx_artnet">
+    </flag>
+    <flag name="openhab_binding_dmx_lib485">
+    </flag>
+    <flag name="openhab_binding_dmx_ola">
+    </flag>
+    <flag name="openhab_binding_dscalarm">
+    </flag>
+    <flag name="openhab_binding_ecotouch">
+    </flag>
+    <flag name="openhab_binding_ehealth">
+    </flag>
+    <flag name="openhab_binding_ekey">
+    </flag>
+    <flag name="openhab_binding_em">
+    </flag>
+    <flag name="openhab_binding_energenie">
+    </flag>
+    <flag name="openhab_binding_enigma2">
+    </flag>
+    <flag name="openhab_binding_enocean">
+    </flag>
+    <flag name="openhab_binding_epsonprojector">
+    </flag>
+    <flag name="openhab_binding_exec">
+    </flag>
+    <flag name="openhab_binding_fht">
+    </flag>
+    <flag name="openhab_binding_freebox">
+    </flag>
+    <flag name="openhab_binding_freeswitch">
+    </flag>
+    <flag name="openhab_binding_fritzaha">
+    </flag>
+    <flag name="openhab_binding_fritzbox">
+    </flag>
+    <flag name="openhab_binding_fs20">
+    </flag>
+    <flag name="openhab_binding_gpio">
+    </flag>
+    <flag name="openhab_binding_hdanywhere">
+    </flag>
+    <flag name="openhab_binding_heatmiser">
+    </flag>
+    <flag name="openhab_binding_homematic">
+    </flag>
+    <flag name="openhab_binding_http">
+    </flag>
+    <flag name="openhab_binding_hue">
+    </flag>
+    <flag name="openhab_binding_iec6205621meter">
+    </flag>
+    <flag name="openhab_binding_ihc">
+    </flag>
+    <flag name="openhab_binding_insteonhub">
+    </flag>
+    <flag name="openhab_binding_insteonplm">
+    </flag>
+    <flag name="openhab_binding_intertechno">
+    </flag>
+    <flag name="openhab_binding_irtrans">
+    </flag>
+    <flag name="openhab_binding_jointspace">
+    </flag>
+    <flag name="openhab_binding_k8055">
+    </flag>
+    <flag name="openhab_binding_knx">
+    </flag>
+    <flag name="openhab_binding_koubachi">
+    </flag>
+    <flag name="openhab_binding_lgtv">
+    </flag>
+    <flag name="openhab_binding_maxcube">
+    </flag>
+    <flag name="openhab_binding_maxcul">
+    </flag>
+    <flag name="openhab_binding_milight">
+    </flag>
+    <flag name="openhab_binding_mios">
+    </flag>
+    <flag name="openhab_binding_modbus">
+    </flag>
+    <flag name="openhab_binding_mpd">
+    </flag>
+    <flag name="openhab_binding_mqtt">
+    </flag>
+    <flag name="openhab_binding_mqttitude">
+    </flag>
+    <flag name="openhab_binding_neohub">
+    </flag>
+    <flag name="openhab_binding_netatmo">
+    </flag>
+    <flag name="openhab_binding_networkhealth">
+    </flag>
+    <flag name="openhab_binding_nibeheatpump">
+    </flag>
+    <flag name="openhab_binding_nikobus">
+    </flag>
+    <flag name="openhab_binding_novelanheatpump">
+    </flag>
+    <flag name="openhab_binding_ntp">
+    </flag>
+    <flag name="openhab_binding_oceanic">
+    </flag>
+    <flag name="openhab_binding_omnilink">
+    </flag>
+    <flag name="openhab_binding_onewire">
+    </flag>
+    <flag name="openhab_binding_onkyo">
+    </flag>
+    <flag name="openhab_binding_openenergymonitor">
+    </flag>
+    <flag name="openhab_binding_openpaths">
+    </flag>
+    <flag name="openhab_binding_opensprinkler">
+    </flag>
+    <flag name="openhab_binding_owserver">
+    </flag>
+    <flag name="openhab_binding_piface">
+    </flag>
+    <flag name="openhab_binding_pilight">
+    </flag>
+    <flag name="openhab_binding_pioneeravr">
+    </flag>
+    <flag name="openhab_binding_plcbus">
+    </flag>
+    <flag name="openhab_binding_plugwise">
+    </flag>
+    <flag name="openhab_binding_pulseaudio">
+    </flag>
+    <flag name="openhab_binding_rfxcom">
+    </flag>
+    <flag name="openhab_binding_rme">
+    </flag>
+    <flag name="openhab_binding_s300th">
+    </flag>
+    <flag name="openhab_binding_samsungac">
+    </flag>
+    <flag name="openhab_binding_samsungtv">
+    </flag>
+    <flag name="openhab_binding_serial">
+    </flag>
+    <flag name="openhab_binding_snmp">
+    </flag>
+    <flag name="openhab_binding_sonos">
+    </flag>
+    <flag name="openhab_binding_squeezebox">
+    </flag>
+    <flag name="openhab_binding_swegonventilation">
+    </flag>
+    <flag name="openhab_binding_systeminfo">
+    </flag>
+    <flag name="openhab_binding_tcp">
+    </flag>
+    <flag name="openhab_binding_tellstick">
+    </flag>
+    <flag name="openhab_binding_tinkerforge">
+    </flag>
+    <flag name="openhab_binding_tivo">
+    </flag>
+    <flag name="openhab_binding_urtsi">
+    </flag>
+    <flag name="openhab_binding_vdr">
+    </flag>
+    <flag name="openhab_binding_weather">
+    </flag>
+    <flag name="openhab_binding_wemo">
+    </flag>
+    <flag name="openhab_binding_withings">
+    </flag>
+    <flag name="openhab_binding_wol">
+    </flag>
+    <flag name="openhab_binding_xbmc">
+    </flag>
+    <flag name="openhab_binding_xpl">
+    </flag>
+    <flag name="openhab_binding_yamahareceiver">
+    </flag>
+    <flag name="openhab_binding_zwave">
+    </flag>
+    <flag name="openhab_io_cv">
+    </flag>
+    <flag name="openhab_io_dropbox">
+    </flag>
+    <flag name="openhab_io_gcal">
+    </flag>
+    <flag name="openhab_io_gpio">
+    </flag>
+    <flag name="openhab_io_multimedia_tts_freetts">
+    </flag>
+    <flag name="openhab_io_multimedia_tts_macintalk">
+    </flag>
+    <flag name="openhab_io_multimedia_tts_marytts">
+    </flag>
+    <flag name="openhab_io_multimedia_tts_speechdispatcher">
+    </flag>
+    <flag name="openhab_io_squeezeserver">
+    </flag>
+    <flag name="openhab_io_transport_cul">
+    </flag>
+    <flag name="openhab_io_transport_xpl">
+    </flag>
+    <flag name="openhab_persistence_cosm">
+    </flag>
+    <flag name="openhab_persistence_db4o">
+    </flag>
+    <flag name="openhab_persistence_exec">
+    </flag>
+    <flag name="openhab_persistence_gcal">
+    </flag>
+    <flag name="openhab_persistence_influxdb">
+    </flag>
+    <flag name="openhab_persistence_jpa">
+    </flag>
+    <flag name="openhab_persistence_logging">
+    </flag>
+    <flag name="openhab_persistence_mongodb">
+    </flag>
+    <flag name="openhab_persistence_mqtt">
+    </flag>
+    <flag name="openhab_persistence_mysql">
+    </flag>
+    <flag name="openhab_persistence_rrd4j">
+    </flag>
+   <flag name="openhab_persistence_sense">
+   </flag>
+  </use>
+</pkgmetadata>
