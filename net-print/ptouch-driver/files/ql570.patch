@@ -1,0 +1,423 @@
+diff -rupN ptouch-driver-1.3-r11.orig/driver/ptouch.xml ptouch-driver-1.3-r11/driver/ptouch.xml
+--- ptouch-driver-1.3-r11.orig/driver/ptouch.xml	2015-10-21 10:50:01.884881035 -0400
++++ ptouch-driver-1.3-r11/driver/ptouch.xml	2015-10-21 10:49:50.958014545 -0400
+@@ -47,6 +47,9 @@ USA
+    <id>printer/Brother-QL-550</id><!-- Brother P-touch QL-550 -->
+   </printer>
+   <printer>
++   <id>printer/Brother-QL-570</id><!-- Brother P-touch QL-570 -->
++  </printer>
++  <printer>
+    <id>printer/Brother-QL-650TD</id><!-- Brother P-touch QL-650TD -->
+   </printer>
+   <printer>
+diff -rupN ptouch-driver-1.3-r11.orig/Makefile.am ptouch-driver-1.3-r11/Makefile.am
+--- ptouch-driver-1.3-r11.orig/Makefile.am	2015-10-21 10:49:59.068915442 -0400
++++ ptouch-driver-1.3-r11/Makefile.am	2015-10-21 10:49:48.154048806 -0400
+@@ -26,6 +26,7 @@ foomaticdbdir			= $(datadir)/foomatic/db
+ nobase_dist_foomaticdb_DATA	= driver/ptouch.xml \
+ 				  printer/Brother-QL-500.xml \
+ 				  printer/Brother-QL-550.xml \
++				  printer/Brother-QL-570.xml \
+ 				  printer/Brother-QL-650TD.xml \
+ 				  printer/Brother-PT-PC.xml \
+ 				  printer/Brother-PT-18R.xml \
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-Align.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-Align.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-Align.xml	2015-10-21 10:50:02.120878152 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-Align.xml	2015-10-21 10:49:51.201011577 -0400
+@@ -56,6 +56,11 @@ USA
+     </constraint>
+     <constraint sense='true'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>ev/Right</arg_defval>
++    </constraint>
++    <constraint sense='true'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>ev/Right</arg_defval>
+     </constraint>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-BytesPerLine.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-BytesPerLine.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-BytesPerLine.xml	2015-10-21 10:50:02.040879130 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-BytesPerLine.xml	2015-10-21 10:49:51.139012334 -0400
+@@ -61,6 +61,11 @@ USA
+     </constraint>
+     <constraint sense='true'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-550 -->
++      <arg_defval>90</arg_defval>
++    </constraint>
++    <constraint sense='true'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>90</arg_defval>
+     </constraint>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-CutMark.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-CutMark.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-CutMark.xml	2015-10-21 10:50:02.276876246 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-CutMark.xml	2015-10-21 10:49:51.362009609 -0400
+@@ -41,7 +41,12 @@ USA
+     </constraint>
+     <constraint sense='false'>
+       <driver>ptouch</driver>
+-      <printer>printer/Brother-QL-550</printer><!-- Brother P-touch QL-650TD -->
++      <printer>printer/Brother-QL-550</printer><!-- Brother P-touch QL-550 -->
++      <arg_defval>na</arg_defval>
++    </constraint>
++    <constraint sense='false'>
++      <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
+       <arg_defval>na</arg_defval>
+     </constraint>
+     <constraint sense='false'>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-HalfCut.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-HalfCut.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-HalfCut.xml	2015-10-21 10:50:02.439874255 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-HalfCut.xml	2015-10-21 10:49:51.513007764 -0400
+@@ -54,6 +54,11 @@ USA
+     </constraint>
+     <constraint sense='false'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>na</arg_defval>
++    </constraint>
++    <constraint sense='false'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>na</arg_defval>
+     </constraint>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-LabelPreamble.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-LabelPreamble.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-LabelPreamble.xml	2015-10-21 10:50:02.486873680 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-LabelPreamble.xml	2015-10-21 10:49:51.554007262 -0400
+@@ -58,6 +58,11 @@ USA
+     </constraint>
+     <constraint sense='true'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>1</arg_defval>
++    </constraint>
++    <constraint sense='true'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>1</arg_defval>
+     </constraint>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-PageSize.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-PageSize.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-PageSize.xml	2015-10-21 10:50:02.741870565 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-PageSize.xml	2015-10-21 10:49:51.834003842 -0400
+@@ -47,6 +47,11 @@ USA
+      </constraint>
+      <constraint sense='true'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>ev/Ptouch-PageSize-62x50mm</arg_defval>
++     </constraint>
++     <constraint sense='true'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>ev/Ptouch-PageSize-62x50mm</arg_defval>
+      </constraint>
+@@ -1822,6 +1827,11 @@ USA
+      </constraint>
+      <constraint sense='false'>
+        <driver>ptouch</driver>
++       <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++       <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
++       <driver>ptouch</driver>
+        <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+        <arg_defval>na</arg_defval>
+      </constraint>
+@@ -1852,6 +1862,11 @@ USA
+      </constraint>
+      <constraint sense='false'>
+        <driver>ptouch</driver>
++       <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++       <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
++       <driver>ptouch</driver>
+        <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+        <arg_defval>na</arg_defval>
+      </constraint>
+@@ -1882,6 +1897,11 @@ USA
+      </constraint>
+      <constraint sense='false'>
+        <driver>ptouch</driver>
++       <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++       <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
++       <driver>ptouch</driver>
+        <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+        <arg_defval>na</arg_defval>
+      </constraint>
+@@ -1912,6 +1932,11 @@ USA
+      </constraint>
+      <constraint sense='false'>
+        <driver>ptouch</driver>
++       <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++       <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
++       <driver>ptouch</driver>
+        <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+        <arg_defval>na</arg_defval>
+      </constraint>
+@@ -1942,6 +1967,11 @@ USA
+      </constraint>
+      <constraint sense='false'>
+        <driver>ptouch</driver>
++       <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++       <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
++       <driver>ptouch</driver>
+        <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+        <arg_defval>na</arg_defval>
+      </constraint>
+@@ -1991,6 +2021,11 @@ USA
+        <arg_defval>na</arg_defval>
+      </constraint>
+      <constraint sense='false'>
++       <driver>ptouch</driver>
++       <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++       <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
+        <driver>ptouch</driver>
+        <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+        <arg_defval>na</arg_defval>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-PixelTransfer.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-PixelTransfer.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-PixelTransfer.xml	2015-10-21 10:50:02.755870394 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-PixelTransfer.xml	2015-10-21 10:49:51.837003805 -0400
+@@ -271,6 +271,11 @@ USA
+      </constraint>
+      <constraint sense='false'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-550 -->
++      <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>na</arg_defval>
+      </constraint>
+@@ -305,6 +310,11 @@ USA
+       <arg_defval>na</arg_defval>
+      </constraint>
+      <constraint sense='false'>
++      <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
+       <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>na</arg_defval>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-Resolution.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-Resolution.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-Resolution.xml	2015-10-21 10:50:03.025867095 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-Resolution.xml	2015-10-21 10:49:52.100000592 -0400
+@@ -181,6 +181,11 @@ USA
+      </constraint>
+      <constraint sense='false'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>na</arg_defval>
+      </constraint>
+@@ -241,6 +246,11 @@ USA
+      </constraint>
+      <constraint sense='false'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>na</arg_defval>
+      </constraint>
+@@ -335,6 +345,11 @@ USA
+       <arg_defval>na</arg_defval>
+      </constraint>
+      <constraint sense='false'>
++      <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>na</arg_defval>
++     </constraint>
++     <constraint sense='false'>
+       <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>na</arg_defval>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-SoftwareMirror.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-SoftwareMirror.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-SoftwareMirror.xml	2015-10-21 10:50:03.161865433 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-SoftwareMirror.xml	2015-10-21 10:49:52.233998955 -0400
+@@ -58,6 +58,11 @@ USA
+     </constraint>
+     <constraint sense='true'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-570 -->
++      <arg_defval>1</arg_defval>
++    </constraint>
++    <constraint sense='true'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>1</arg_defval>
+     </constraint>
+diff -rupN ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-TransferMode.xml ptouch-driver-1.3-r11/opt/Brother-Ptouch-TransferMode.xml
+--- ptouch-driver-1.3-r11.orig/opt/Brother-Ptouch-TransferMode.xml	2015-10-21 10:50:03.184865152 -0400
++++ ptouch-driver-1.3-r11/opt/Brother-Ptouch-TransferMode.xml	2015-10-21 10:49:52.265998564 -0400
+@@ -52,6 +52,11 @@ USA
+     </constraint>
+     <constraint sense='false'>
+       <driver>ptouch</driver>
++      <printer>printer/Brother-QL-570</printer><!-- Brother P-touch QL-550 -->
++      <arg_defval>na</arg_defval>
++    </constraint>
++    <constraint sense='false'>
++      <driver>ptouch</driver>
+       <printer>printer/Brother-QL-650TD</printer><!-- Brother P-touch QL-650TD -->
+       <arg_defval>na</arg_defval>
+     </constraint>
+diff -rupN ptouch-driver-1.3-r11.orig/printer/Brother-QL-570.xml ptouch-driver-1.3-r11/printer/Brother-QL-570.xml
+--- ptouch-driver-1.3-r11.orig/printer/Brother-QL-570.xml	1969-12-31 19:00:00.000000000 -0500
++++ ptouch-driver-1.3-r11/printer/Brother-QL-570.xml	2015-10-21 10:49:54.381972709 -0400
+@@ -0,0 +1,113 @@
++<!--
++Copyright (c) 2006  Arne John Glenstrup <panic@itu.dk>
++
++This file is part of ptouch-driver.
++
++ptouch-driver is free software; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation; either version 2 of the License, or (at
++your option) any later version.
++
++ptouch-driver is distributed in the hope that it will be useful, but
++WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with ptouch-driver; if not, write to the Free Software
++Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
++USA
++-->
++<printer id="printer/Brother-QL-570">
++  <make>Brother</make>
++  <model>QL-570</model>
++  <pcmodel>BRQ570</pcmodel>
++  <mechanism>
++    <thermal/>
++    <!--not "color"-->
++    <resolution>
++      <dpi>
++        <x>300</x>
++        <y>300</y>
++      </dpi>
++    </resolution>
++    <margins>
++      <general>
++        <unit>mm</unit>
++        <top>3</top>
++        <bottom>3</bottom>
++        <left>1.5</left>
++        <right>1.5</right>
++      </general>
++    </margins>
++    <consumables>
++      <comments>
++        <en>
++        Special &quot;DK&quot; adhesive labels or adhesive tape thermal paper.
++        No ink or ribbons needed.
++	Die Cut Standard Address Labels 29mm x 90mm, 400 Labels 	 - $7.99
++	Die Cut Shipping Labels 62mm x 100mm, 300 Labels 	 - $13.99
++	Die Cut File Folder Labels 17mm x 87mm, 300 labels 	 - $6.99
++	Multipurpose Die Cut Labels 17mm x 54mm, 400 Labels 	 - $7.99
++	CD/DVD Film Labels 58mm x 58mm, 100 Labels 	 - $14.99
++	Large Die Cut Address Labels 38mm x 90mm, 400 Labels/Roll 	 - $10.99
++	Small Address Label 29mm x 62mm, 800 Labels 	 - $13.99
++	Clear Continuous Film Roll 62mm x 15.24m, Clear 	 - $44.99
++	White Continuous Film Roll 62mm x 30.48m, White 	 - $13.99
++	White Continuous Film Roll 29mm x 30.48m, White 	 - $8.99
++	White Continuous Film Roll 29mm x 15.24m, White 	 - $15.99
++	White Continuous Film Roll 62mm x 15.24m, White 	 - $30.99
++	White Continuous Film Roll 12mm x 30.48m, White 	 - $7.99
++	Yellow Continuous Film Roll 62mm x 15.24m, Yellow 	 - $44.99
++        Cutter Unit, 2 pcs
++        Cleaning Sheets, 10 sheets
++        </en>
++      </comments>
++      <partno>DK-11201</partno>
++      <partno>DK-11202</partno>
++      <partno>DK-11203</partno>
++      <partno>DK-11204</partno>
++      <partno>DK-11207</partno>
++      <partno>DK-11208</partno>
++      <partno>DK-11209</partno>
++      <partno>DK-11210</partno>
++      <partno>DK-11218</partno>
++      <partno>DK-11219</partno>
++      <partno>DK-11221</partno>
++      <partno>DK-22113</partno>
++      <partno>DK-22205</partno>
++      <partno>DK-22210</partno>
++      <partno>DK-22211</partno>
++      <partno>DK-22212</partno>
++      <partno>DK-22214</partno>
++      <partno>DK-22223</partno>
++      <partno>DK-22225</partno>
++      <partno>DK-22606</partno>
++      <partno>DK-44205</partno>
++      <partno>DK-44605</partno>
++      <partno>DK-N55224</partno>
++    </consumables>
++  </mechanism>
++  <url>http://www.brother.co.uk/labelling/ql-printers/ql570</url>
++  <lang>
++    <proprietary />
++  </lang>
++  <autodetect>
++    <general>
++      <ieee1284>MFG:Brother;CMD:PT-CBP;MDL:QL-570;CLS:PRINTER;</ieee1284>
++      <commandset>PT-CBP</commandset>
++      <description>Brother QL-570</description>
++      <manufacturer>Brother</manufacturer>
++      <model>QL-570</model>
++    </general>
++  </autodetect>
++  <functionality>B</functionality>
++  <driver>ptouch</driver>
++  <unverified />
++  <!--no "contrib_url"-->
++  <comments>
++    <en>
++    Prints 3 inches per second.
++    </en>
++  </comments>
++</printer>
+diff -rupN ptouch-driver-1.3-r11.orig/ptouch-driver-foomatic.spec.in ptouch-driver-1.3-r11/ptouch-driver-foomatic.spec.in
+--- ptouch-driver-1.3-r11.orig/ptouch-driver-foomatic.spec.in	2015-10-21 10:49:59.348912021 -0400
++++ ptouch-driver-1.3-r11/ptouch-driver-foomatic.spec.in	2015-10-21 10:49:48.441045299 -0400
+@@ -74,6 +74,7 @@ rm -rf $RPM_BUILD_ROOT
+ /usr/share/foomatic/db/source/printer/Brother-PT-PC.xml
+ /usr/share/foomatic/db/source/printer/Brother-QL-500.xml
+ /usr/share/foomatic/db/source/printer/Brother-QL-550.xml
++/usr/share/foomatic/db/source/printer/Brother-QL-570.xml
+ /usr/share/foomatic/db/source/printer/Brother-QL-650TD.xml
+ /usr/share/foomatic/db/source/opt/Brother-Ptouch-AdvanceDistance.xml
+ /usr/share/foomatic/db/source/opt/Brother-Ptouch-Align.xml
+diff -rupN ptouch-driver-1.3-r11.orig/rastertoptch.c ptouch-driver-1.3-r11/rastertoptch.c
+--- ptouch-driver-1.3-r11.orig/rastertoptch.c	2015-10-21 10:49:59.509910055 -0400
++++ ptouch-driver-1.3-r11/rastertoptch.c	2015-10-21 10:49:48.595043418 -0400
+@@ -209,6 +209,7 @@
+  * <tr><th>Model    <th>Cutter  <th>Xfer<th>DPI<th>Pixels<th>Bytes<th>Tape
+  * <tr><td>QL-500   <td>manual   <td>ULP<td>300<td>720<td>90<td>DK12-62mm
+  * <tr><td>QL-550   <td>auto     <td>ULP<td>300<td>720<td>90<td>DK12-62mm
++ * <tr><td>QL-570   <td>auto     <td>ULP<td>300<td>720<td>90<td>DK12-62mm
+  * <tr><td>QL-650TD <td>auto     <td>ULP<td>300<td>720<td>90<td>DK12-62mm
+  * <tr><td>PT-PC    <td>auto     <td>BIP<td>180<td>128<td> 3<td>TZ6-24mm
+  * <tr><td>PT-18R   <td>auto     <td>RLE<td>180<td>128<td>16<td>TZ6-18mm
