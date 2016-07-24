@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
 inherit eutils gnome2-utils multilib flag-o-matic
 
 MY_P=makemkv-oss-${PV}
@@ -16,39 +17,88 @@ SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libav multilib qt4"
+IUSE="libav multilib qt4 qt5"
+REQUIRED_USE="?? ( qt4 qt5 )"
 
-QA_PREBUILT="opt/bin/makemkvcon opt/bin/mmdtsdec"
+QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 
-RDEPEND="
+DEPEND="
 	sys-libs/glibc[multilib?]
 	dev-libs/expat
 	dev-libs/openssl:0
 	sys-libs/zlib
 	qt4? (
-		virtual/opengl
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
 		dev-qt/qtgui:4
 	)
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 	!libav? ( >=media-video/ffmpeg-1.0.0:0= )
 	libav? ( >=media-video/libav-0.8.9:0= )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	net-misc/wget"
 
-S=${WORKDIR}/makemkv-oss-${PV}
+# Upstream uses non-standard locale names so map them with this
+# associative array and perform some tricks below.
+declare -A MY_LOCALES
+MY_LOCALES=(
+	[zh]=chi
+	[da]=dan
+	[de]=deu
+	[nl]=dut
+	[fr]=fra
+	[it]=ita
+	[ja]=jpn
+	[no]=nor
+	[fa]=per
+	[pl]=pol
+	[pt_BR]=ptb
+	[es]=spa
+	[sv]=swe
+)
+
+PLOCALES="${!MY_LOCALES[@]}"
+inherit l10n
+
+S="${WORKDIR}/makemkv-oss-${PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-{makefile,path}.patch
+	PATCHES+=( "${FILESDIR}"/${PN}-{makefile,path,sysmacros}.patch )
+
+	# Qt5 always trumps Qt4 if it is available. There are no configure
+	# options or variables to control this and there is no publicly
+	# available configure.ac either.
+	if use qt4; then
+		PATCHES+=( "${FILESDIR}"/${PN}-qt4.patch )
+	elif use qt5; then
+		PATCHES+=( "${FILESDIR}"/${PN}-qt5.patch )
+	fi
+
+	# Check for locale changes against the non-standard names.
+	PLOCALES="${MY_LOCALES[@]}" l10n_find_plocales_changes "${WORKDIR}"/${MY_PB}/src/share makemkv_ .mo.gz
+
+	default
 }
 
 src_configure() {
+	# See bug #439380.
 	replace-flags -O* -Os
-	local args=""
-	use qt4 || args="--disable-gui"
-	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
-		econf $args
+
+	local econf_args=()
+
+	if use qt4 || use qt5; then
+		econf_args+=( '--enable-gui' )
+	else
+		econf_args+=( '--disable-gui' )
 	fi
+
+	econf "${econf_args[@]}"
 }
 
 src_compile() {
@@ -66,9 +116,8 @@ src_install() {
 	dosym libmakemkv.so.1 /usr/$(get_libdir)/libmakemkv.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so.0.${PV}
-	into /opt
 
-	if use qt4; then
+	if use qt4 || use qt5; then
 		dobin out/makemkv
 
 		local res
@@ -79,24 +128,29 @@ src_install() {
 		make_desktop_entry ${PN} MakeMKV ${PN} 'Qt;AudioVideo;Video'
 	fi
 
-	# install bin package
-	pushd "${WORKDIR}"/${MY_PB}/bin >/dev/null
-	if use x86; then
-		dobin i386/{makemkvcon,mmdtsdec}
-	elif use amd64; then
-		dobin amd64/makemkvcon
-		use multilib && dobin i386/mmdtsdec
-	fi
-	popd >/dev/null
+	cd "${WORKDIR}"/${MY_PB} || die
 
-	# install license and default profile
-	pushd "${WORKDIR}"/${MY_PB}/src/share >/dev/null
+	# install prebuilt bins
+	if use x86; then
+		dobin bin/i386/{makemkvcon,mmdtsdec}
+	elif use amd64; then
+		dobin bin/amd64/makemkvcon
+		use multilib && dobin bin/i386/mmdtsdec
+	fi
+
 	insinto /usr/share/MakeMKV
-	doins *.{gz,xml}
-	popd >/dev/null
+
+	# install profiles
+	doins src/share/*.xml
+
+	# install locales
+	local locale
+	for locale in $(l10n_get_locales); do
+		doins src/share/makemkv_${MY_LOCALES[${locale}]}.mo.gz
+	done
 }
 
-pkg_preinst() {	gnome2_icon_savelist; }
+pkg_preinst() { gnome2_icon_savelist; }
 
 pkg_postinst() {
 	gnome2_icon_cache_update
@@ -110,9 +164,9 @@ pkg_postinst() {
 	elog "Note that beta license may have an expiration date and you will"
 	elog "need to check for newer licenses/releases. "
 	elog ""
-	elog "If this is a new install, remember to copy the default profile"
-	elog "to the config directory:"
-	elog "cp /usr/share/MakeMKV/default.mmcp.xml ~/.MakeMKV/"
+	elog "We previously said to copy default.mmcp.xml to ~/.MakeMKV/. This"
+	elog "is no longer necessary and you should delete it from there to"
+	elog "avoid warning messages."
 	elog ""
 	elog "MakeMKV can also act as a drop-in replacement for libaacs and"
 	elog "libbdplus, allowing transparent decryption of a wider range of"
