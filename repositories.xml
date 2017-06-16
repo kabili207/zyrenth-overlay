@@ -4,13 +4,14 @@
   <repo quality="experimental" status="unofficial">
     <name>zyrenth</name>
     <description lang="en">Personal overlay</description>
-    <homepage>http://www.zyrenth.com/</homepage>
+    <homepage>https://github.com/kabili207/zyrenth-overlay</homepage>
     <owner type="person">
-      <email>kabili@zyrenth.com</email>
+      <email>kabi-bugz.gentoo@zyrenth.com</email>
       <name>Andrew Nagle</name>
     </owner>
-    <source type="git">git://zyrenth.com/zyrenth-overlay.git</source>
-    <feed>http://git.zyrenth.com/zyrenth-overlay.git/atom</feed>
-    <feed>http://git.zyrenth.com/zyrenth-overlay.git/rss</feed>
+    <source type="git">https://github.com/kabili207/zyrenth-overlay.git</source>
+    <source type="git">git://github.com/kabili207/zyrenth-overlay.git</source>
+    <source type="git">git@github.com:kabili207/zyrenth-overlay.git</source>
+    <feed>https://github.com/kabili207/zyrenth-overlay/commits/master.atom</feed>
   </repo>
 </repositories>

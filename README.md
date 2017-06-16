@@ -7,7 +7,7 @@ Installation (as root)
 ----------------------
 
 ```
-wget http://git.zyrenth.com/zyrenth-overlay.git/blob_plain/HEAD:/repositories.xml -O /etc/layman/overlays/zyrenth.xml
+wget https://raw.githubusercontent.com/kabili207/zyrenth-overlay/master/repositories.xml -O /etc/layman/overlays/zyrenth.xml
 layman -S
 layman -a zyrenth
 ```
