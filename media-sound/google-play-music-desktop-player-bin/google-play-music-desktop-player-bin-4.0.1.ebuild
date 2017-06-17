@@ -14,7 +14,7 @@ SRC_URI="
         x86? ( ${SRC_URI_X86} )
 "
 
-LICENSE=""
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
