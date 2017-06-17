@@ -8,7 +8,7 @@ DESCRIPTION="A LADSPA based multiband equalizer approach for getting better soun
 HOMEPAGE="https://github.com/kernelOfTruth/pulseaudio-equalizer"
 SRC_URI="https://github.com/kernelOfTruth/pulseaudio-equalizer/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE=""
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
