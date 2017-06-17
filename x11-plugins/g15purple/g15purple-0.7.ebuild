@@ -1,16 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=4
+EAPI=6
 
-inherit multilib git-2
+inherit multilib
 
-DESCRIPTION="detox safely removes spaces and strange characters from filenames"
-HOMEPAGE="http://www.zyrenth.com/"
-EGIT_REPO_URI="git://zyrenth.com/g15-purple.git"
+DESCRIPTION="Pidgin/libpurple plugin that displays incoming messages on a Logitech G15 LCD screen"
+HOMEPAGE="https://github.com/kabili207/g15-purple"
+EGIT_REPO_URI="https://github.com/kabili207/g15-purple.git"
 EGIT_COMMIT="3f7562fab10ec48c6011a71568b5620d3de1717a"
-SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
