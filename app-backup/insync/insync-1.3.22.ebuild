@@ -8,16 +8,17 @@ inherit rpm
 
 DESCRIPTION="Advanced cross-platform Google Drive client"
 HOMEPAGE="https://www.insynchq.com/"
-MAGIC="36056"
-MAIN_INSTALLER_STRING="http://s.insynchq.com/builds/insync-${PV}.${MAGIC}-fc21"
+
+MAGIC="36179"
+MAIN_INSTALLER_STRING="http://s.insynchq.com/builds/insync-${PV}.${MAGIC}-fc25"
 SRC_URI="
 	x86?      ( ${MAIN_INSTALLER_STRING}.i686.rpm )
 	amd64?    ( ${MAIN_INSTALLER_STRING}.x86_64.rpm )"
 
+LICENSE="as-is"
 SLOT="0"
-KEYWORDS="-* ~x86 ~amd64"
-DEPEND="<dev-libs/libevent-2.1"
-RDEPEND="${DEPEND}"
+KEYWORDS="amd64 x86"
+IUSE=""
 
 src_unpack() {
 	rpm_src_unpack ${A}
