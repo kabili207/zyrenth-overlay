@@ -28,4 +28,4 @@ DEPEND="
 	${RDEPEND}
 "
 
-S="${WORKDIR}/${PN//-/_}-${PV}"
+S="${WORKDIR}/${PN//-/.}-${PV}"
