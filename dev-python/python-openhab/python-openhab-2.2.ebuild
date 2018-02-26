@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/requests-2.4.3[${PYTHON_USEDEP}]
-	>=dev-python/dateutil-2.2[${PYTHON_USEDEP}]
+	>=dev-python/python-dateutil-2.2[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
