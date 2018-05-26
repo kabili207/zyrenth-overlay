@@ -33,5 +33,3 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
-
-DOCS="README.rst"
