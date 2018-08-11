@@ -26,4 +26,6 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
-
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-setup.patch
+)
