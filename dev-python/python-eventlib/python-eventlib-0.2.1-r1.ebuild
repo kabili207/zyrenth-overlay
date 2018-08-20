@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/greenlet[${PYTHON_USEDEP}]
-	dev-python/twisted-core[${PYTHON_USEDEP}]
+	dev-python/twisted[${PYTHON_USEDEP}]
 "
 
 PATCHES=( "${FILESDIR}/${P}-libressl.patch" )
