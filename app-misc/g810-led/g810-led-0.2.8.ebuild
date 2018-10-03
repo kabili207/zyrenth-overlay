@@ -23,11 +23,6 @@ DEPEND="${RDEPEND}"
 
 DOCS=("README.md" "sample_profiles")
 
-src_prepare() {
-	eapply "${FILESDIR}/g810-led-0.2.7-Have_makefile_use_environment.patch"
-	default
-}
-
 src_compile() {
 	emake LIB="$(usex hidapi hidapi libusb)"
 }
