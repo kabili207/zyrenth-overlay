@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/Postman"
+S="${WORKDIR}/Postman/app"
 
 src_install() {
   insinto /opt/${MY_PN}
