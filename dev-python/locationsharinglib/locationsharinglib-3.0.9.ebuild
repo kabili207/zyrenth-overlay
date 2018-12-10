@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
+PYTHON_COMPAT=(python{2_7,3_5,3_6})
 
 inherit distutils-r1
 
@@ -18,9 +18,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	=dev-python/cachetools-2.0.1[${PYTHON_USEDEP}]
-	=dev-python/beautifulsoup-4.6.0[${PYTHON_USEDEP}]
-	=dev-python/requests-2.19.1[${PYTHON_USEDEP}]
+	=dev-python/cachetools-2.0*[${PYTHON_USEDEP}]
+	=dev-python/beautifulsoup-4.6*[${PYTHON_USEDEP}]
+	=dev-python/requests-2.19*[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
