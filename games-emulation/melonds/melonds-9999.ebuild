@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3 cmake-utils
+inherit git-r3 cmake-utils wxwidgets
 
 DESCRIPTION="Nintendo DS emulator"
 HOMEPAGE="https://github.com/StapleButter/melonDS"
@@ -14,8 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	x11-libs/gtk+:3
-	x11-libs/wxGTK:3.0
+	x11-libs/wxGTK:3.0=[X]
 	>=media-libs/libsdl2-2.0.5
 "
 DEPEND="
