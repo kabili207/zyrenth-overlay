@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="PyDrive-${PV}"
 
 DESCRIPTION="Google Drive API made easy."
-HOMEPAGE="https://github.com/gsuitedevs"
+HOMEPAGE="https://github.com/gsuitedevs/PyDrive"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
