@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit cmake-utils 
+inherit cmake-utils
 
 DESCRIPTION="Nintendo DS emulator"
 HOMEPAGE="https://github.com/StapleButter/melonDS"
@@ -12,7 +11,7 @@ HOMEPAGE="https://github.com/StapleButter/melonDS"
 COMMIT_ID="c2fa561e403c755291ce9d70d3fdb6644de2d34c"
 SRC_URI="https://github.com/StapleButter/melonDS/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

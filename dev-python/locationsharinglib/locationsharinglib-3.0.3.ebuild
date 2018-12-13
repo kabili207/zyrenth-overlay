@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -8,7 +7,7 @@ PYTHON_COMPAT=(python{2_7,3_5,3_6})
 
 inherit distutils-r1
 
-DESCRIPTION="A library to retrieve coordinates from an google account that has been shared locations of other accounts."
+DESCRIPTION="API for Google Map's location sharing feature"
 HOMEPAGE="https://github.com/costastf/locationsharinglib"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
@@ -26,4 +25,3 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
-

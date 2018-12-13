@@ -3,15 +3,20 @@
 
 EAPI=6
 
-inherit git-r3 cmake-utils
+inherit cmake-utils
 
 DESCRIPTION="Nintendo DS emulator"
 HOMEPAGE="https://github.com/StapleButter/melonDS"
-EGIT_REPO_URI="https://github.com/StapleButter/melonDS"
+
+COMMIT_ID="d4d4965b2fffc69958685a25a9d9fc0c78b54567"
+SRC_URI="https://github.com/StapleButter/melonDS/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+S="${WORKDIR}/melonDS-${COMMIT_ID}"
 
 RDEPEND="
 	x11-libs/gtk+:3

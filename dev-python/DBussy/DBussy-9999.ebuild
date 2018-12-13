@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -15,7 +14,6 @@ EGIT_REPO_URI="https://github.com/ldo/dbussy"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
-
 
 RDEPEND="
 	${PYTHON_DEPS}

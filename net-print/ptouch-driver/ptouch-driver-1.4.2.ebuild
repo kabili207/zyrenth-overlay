@@ -1,6 +1,5 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="5"
 
@@ -9,9 +8,7 @@ inherit eutils autotools versionator
 DESCRIPTION="Driver for the Brother P-touch series of label printers."
 HOMEPAGE="https://bitbucket.org/philpem/printer-driver-ptouch"
 
-# BitBucket snapshots use the a 12 char ref number
 COMMIT_NUMBER="72121843b720"
-#MY_PV=$(replace_version_separator 2 '-')
 
 SRC_URI="https://bitbucket.org/philpem/printer-driver-ptouch/get/${COMMIT_NUMBER}.tar.gz -> ${P}.tar.gz"
 

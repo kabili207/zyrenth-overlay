@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,18 +11,15 @@ DESCRIPTION="A Python abstraction class to access NUT servers"
 HOMEPAGE="https://github.com/mezz64/python-nut2"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="GPL3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-    ${PYTHON_DEPS}
+	${PYTHON_DEPS}
 "
 DEPEND="
-    dev-python/setuptools[${PYTHON_USEDEP}]
-    ${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	${RDEPEND}
 "
-
-#DOCS="README.rst"
-

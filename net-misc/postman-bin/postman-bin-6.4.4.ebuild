@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,19 +21,19 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/Postman/app"
 
 src_install() {
-  insinto /opt/${MY_PN}
-  doins -r *
+	insinto /opt/${MY_PN}
+	doins -r *
 
-  exeinto /opt/${MY_PN}
-  doexe Postman
+	exeinto /opt/${MY_PN}
+	doexe Postman
 
-  dosym /opt/${MY_PN}/Postman /usr/bin/${MY_PN}
+	dosym ./Postman /usr/bin/${MY_PN}
 
-  newicon -s 128 ${S}/resources/app/assets/icon.png postman.png
+	newicon -s 128 "${S}/resources/app/assets/icon.png" postman.png
 
-  make_desktop_entry "postman" \
-      "Postman" \
-	  "/usr/share/icons/hicolor/128x128/apps/postman.png" \
-	  "Development" \
-	  "Comment=Postman API IDE"
+	make_desktop_entry "postman" \
+		"Postman" \
+		"/usr/share/icons/hicolor/128x128/apps/postman.png" \
+		"Development" \
+		"Comment=Postman API IDE"
 }
