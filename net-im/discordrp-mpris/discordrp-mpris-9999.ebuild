@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/DBussy[${PYTHON_USEDEP}]
+	dev-python/pytoml[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

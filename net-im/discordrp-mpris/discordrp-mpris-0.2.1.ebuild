@@ -14,12 +14,13 @@ SRC_URI="https://github.com/FichteFoll/discordrp-mpris/archive/v${PV}.tar.gz -> 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/DBussy[${PYTHON_USEDEP}]
+	dev-python/pytoml[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
