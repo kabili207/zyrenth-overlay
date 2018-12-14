@@ -8,7 +8,7 @@ inherit cmake-utils wxwidgets
 DESCRIPTION="Nintendo DS emulator"
 HOMEPAGE="https://github.com/StapleButter/melonDS"
 
-COMMIT_ID="d4d4965b2fffc69958685a25a9d9fc0c78b54567"
+COMMIT_ID="d92c7e79df1eecf5c287cf76011dcb4cd4228ebc"
 SRC_URI="https://github.com/StapleButter/melonDS/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

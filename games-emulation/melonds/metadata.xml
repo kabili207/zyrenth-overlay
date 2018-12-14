@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-	    <email>kabi-bugz.gentoo@zyrenth.com</email>
-	    <name>Amy Nagle</name>
+		<email>kabi-bugz.gentoo@zyrenth.com</email>
+		<name>Amy Nagle</name>
 	</maintainer>
 	<upstream>
-	    <remote-id type="github">StapleButter/melonDS</remote-id>
+		<remote-id type="github">StapleButter/melonDS</remote-id>
 	</upstream>
 </pkgmetadata>
