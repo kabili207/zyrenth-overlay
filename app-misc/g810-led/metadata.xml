@@ -8,10 +8,10 @@
 	<use>
 		<flag name='hidapi'>
 			Use 
-			<pkg>dev-libs/hidapi</pkg>
-			 instead of 
-			<pkg>virtual/libusb</pkg>
-			 for talking to the device (advertised to be faster)
+			<pkg>dev-libs/hidapi</pkg> 
+			instead of 
+			<pkg>virtual/libusb</pkg> 
+			for talking to the device (advertised to be faster)
 		</flag>
 	</use>
 	<upstream>
