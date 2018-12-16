@@ -28,8 +28,8 @@ S="${WORKDIR}/philpem-printer-driver-ptouch-${COMMIT_NUMBER}"
 src_prepare() {
 	# Make sure we write the filter to the correct directory
 	sed -i -e 's/\$(libdir)\/cups\/filter/\$(libexecdir)\/cups\/filter/' "${S}/Makefile.am" || die "Sed failed!"
-
 	eautoreconf
+	default
 }
 
 src_install() {

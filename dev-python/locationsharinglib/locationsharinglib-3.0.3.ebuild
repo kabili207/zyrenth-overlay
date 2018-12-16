@@ -17,9 +17,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	=dev-python/cachetools-2.0*[${PYTHON_USEDEP}]
+	=dev-python/cachetools-2.1*[${PYTHON_USEDEP}]
 	=dev-python/beautifulsoup-4.6*[${PYTHON_USEDEP}]
-	=dev-python/requests-2.19*[${PYTHON_USEDEP}]
+	=dev-python/requests-2.21*[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
