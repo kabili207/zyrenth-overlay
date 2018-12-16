@@ -1,13 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit versionator
+EAPI=7
 
 DESCRIPTION="Printer information files for foomatic-db-engine to generate ppds"
 HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
-SRC_URI="http://www.openprinting.org/download/foomatic/${PN}-$(replace_version_separator 2 -).tar.xz"
+SRC_URI="http://www.openprinting.org/download/foomatic/${PN}-$(ver_rs 2 -).tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,7 +17,7 @@ RDEPEND="
 	net-print/foomatic-db-engine
 	!net-print/foo2zjs[hp2600n]"
 
-S="${WORKDIR}/${PN}-$(get_version_component_range 3 ${PV})"
+S="${WORKDIR}/${PN}-$(ver_cut 3)"
 
 src_prepare() {
 	# ppd files do not belong to this package

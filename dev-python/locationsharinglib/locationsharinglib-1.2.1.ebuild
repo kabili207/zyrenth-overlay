@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/cachetools[${PYTHON_USEDEP}]
-	dev-python/beautifulsoup[${PYTHON_USEDEP}]
+	=dev-python/beautifulsoup-4.6*[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "
 DEPEND="

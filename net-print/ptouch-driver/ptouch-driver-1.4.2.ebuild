@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils autotools versionator
+inherit eutils autotools
 
 DESCRIPTION="Driver for the Brother P-touch series of label printers."
 HOMEPAGE="https://bitbucket.org/philpem/printer-driver-ptouch"
