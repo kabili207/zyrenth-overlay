@@ -27,7 +27,7 @@ src_install() {
 	exeinto /opt/${MY_PN}
 	doexe Postman
 
-	dosym ./Postman /usr/bin/${MY_PN}
+	dosym /opt/${MY_PN}/Postman /usr/bin/${MY_PN}
 
 	newicon -s 128 "${S}/resources/app/assets/icon.png" postman.png
 
