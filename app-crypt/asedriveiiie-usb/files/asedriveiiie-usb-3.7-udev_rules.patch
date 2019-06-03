@@ -1,0 +1,46 @@
+diff -ruN asedriveiiie-usb-3.7-old/configure asedriveiiie-usb-3.7/configure
+--- asedriveiiie-usb-3.7-old/configure	2019-06-03 12:13:14.486180000 -0400
++++ asedriveiiie-usb-3.7/configure	2019-06-03 12:36:33.737692066 -0400
+@@ -8,6 +8,7 @@
+ BUILD=
+ PCSC_HEADERS=
+ PCSC_LIBS=
++UDEVRULESDIR=/lib/udev/rules.d
+ 
+ for p in $*; do
+ 	v=${p#*=}
+@@ -27,6 +28,9 @@
+ 		--with-pcsc-libs=*)
+ 			PCSC_LIBS="$v"
+ 		;;
++		--with-udev-rules-dir=*)
++			UDEVRULESDIR="$v"
++		;;
+ 		--build=*)
+ 			BUILD="$v"
+ 		;;
+@@ -41,6 +45,7 @@
+ 	echo -e "\t--with-pcsc-drivers-dir=dir\tSet pcsc drivers directory."
+ 	echo -e "\t--with-pcsc-headers=dir\t\tSet manual pcsc headers directory."
+ 	echo -e "\t--with-pcsc-libs=dir\t\tSet manual pcsc library dir."
++	echo -e "\t--with-udev-rules-dir=dir\t\tSet manual udev rules dir."
+ 	exit 1
+ fi
+ 
+@@ -70,5 +75,6 @@
+ echo "BUILD=${BUILD}" >> Makefile.inc
+ echo "CFLAGS=${CFLAGS}" >> Makefile.inc
+ echo "LDFLAGS=${LDFLAGS}" >> Makefile.inc
++echo "UDEVRULESDIR=${UDEVRULESDIR}" >> Makefile.inc
+ 
+ exit 0
+diff -ruN asedriveiiie-usb-3.7-old/Makefile asedriveiiie-usb-3.7/Makefile
+--- asedriveiiie-usb-3.7-old/Makefile	2019-06-03 12:13:14.485180000 -0400
++++ asedriveiiie-usb-3.7/Makefile	2019-06-03 12:37:42.119885200 -0400
+@@ -25,4 +25,5 @@
+ 	install -c -m 0644 ifd-ASEDriveIIIe-USB.bundle/Contents/Resources/English.lproj/InfoPlist.strings "${DRIVER_DIR}/Contents/Resources/English.lproj"
+ 	install -c -d "${DRIVER_DIR}/Contents/Linux"
+ 	install -c -m 0755 libASEDriveIIIe-USB.so "${DRIVER_DIR}/Contents/Linux"
+-	install -c -m 0644 50-pcscd-asedriveiiie.rules /etc/udev/rules.d/.
++	install -c -d "${DESTDIR}/${UDEVRULESDIR}"
++	install -c -m 0644 50-pcscd-asedriveiiie.rules "${DESTDIR}/${UDEVRULESDIR}"
