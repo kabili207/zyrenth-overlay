@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/Postman"
+S="${WORKDIR}/Postman/app"
 
 src_install() {
 	insinto /opt/${MY_PN}
