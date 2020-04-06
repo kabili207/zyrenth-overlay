@@ -3,14 +3,15 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python2_7 python3_{6,7,8})
+PYTHON_COMPAT=(python3_{6,7,8})
 
 inherit distutils-r1
 
+MY_P="${PN//-/.}-${PV}"
+
 DESCRIPTION="Python tool for extracting information from PDF documents"
 HOMEPAGE="https://github.com/pdfminer/pdfminer.six"
-# Source isn't on pypi...
-SRC_URI="https://github.com/pdfminer/pdfminer.six/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_P:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,7 +22,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 "
 DEPEND="
@@ -29,4 +29,4 @@ DEPEND="
 	${RDEPEND}
 "
 
-S="${WORKDIR}/${PN//-/.}-${PV}"
+S="${WORKDIR}/${MY_P}"
