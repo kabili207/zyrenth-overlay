@@ -1,0 +1,13 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+######################################################################
+
+# License agreements that try to take away your rights. These are more
+# restrictive than "all-rights-reserved" or require explicit approval.
+EULA DisplayLink-EULA
+
+# Local Variables:
+# mode: conf-space
+# eval: (visual-line-mode 1)
+# End:
