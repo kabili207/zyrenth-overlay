@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	after xdm
+}
+
+start() {
+	modprobe -q evdi
+	start-stop-daemon --start --background --chdir /opt/displaylink --make-pidfile --pidfile /run/displaylink.pid --exec /opt/displaylink/DisplayLinkManager
+	eend $?
+}
+
+stop() {
+	start-stop-daemon --stop --pidfile /run/displaylink.pid
+	eend $?
+}
