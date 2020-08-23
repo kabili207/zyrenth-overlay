@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{7,8})
+PYTHON_COMPAT=(python3_7)
 
 inherit git-r3 distutils-r1
 
@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/DBussy[${PYTHON_USEDEP}]
+	dev-python/dbussy[${PYTHON_USEDEP}]
 	dev-python/pytoml[${PYTHON_USEDEP}]
 "
 DEPEND="

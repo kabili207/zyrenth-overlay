@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=(python3_6)
+PYTHON_COMPAT=(python3_7)
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/DBussy[${PYTHON_USEDEP}]
+	dev-python/dbussy[${PYTHON_USEDEP}]
 	dev-python/pytoml[${PYTHON_USEDEP}]
 "
 DEPEND="
