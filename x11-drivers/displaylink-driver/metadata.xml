@@ -5,7 +5,4 @@
 		<email>kabi-bugz.gentoo@zyrenth.com</email>
 		<name>Amy Nagle</name>
 	</maintainer>
-	<longdescription lang="en">
-		DisplayLink Binary Driver for Ubuntu from DisplayLink Corp.
-	</longdescription>
 </pkgmetadata>

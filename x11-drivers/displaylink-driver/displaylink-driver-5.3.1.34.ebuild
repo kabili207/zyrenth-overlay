@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,10 @@ KEYWORDS="~amd64 ~arm ~x86 "
 IUSE="systemd"
 
 QA_PREBUILT="/opt/displaylink/DisplayLinkManager"
-RESTRICT="fetch"
+RESTRICT="fetch bindist"
 
-DEPEND="app-admin/chrpath"
+DEPEND="app-admin/chrpath
+	app-arch/unzip"
 RDEPEND=">=sys-devel/gcc-6.5.0
 	=x11-drivers/evdi-1.7*
 	virtual/libusb:1

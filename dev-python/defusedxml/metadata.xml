@@ -6,6 +6,6 @@
 		<name>Amy Nagle</name>
 	</maintainer>
 	<upstream>
-		<remote-id type='github'>MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-</remote-id>
+		<remote-id type='github'>tiran/defusedxml</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Logitech Keyboard per-key lighting control -- G410, G610, G810, G910"
 HOMEPAGE="https://github.com/spectras/keyleds"
