@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="pax_kernel"
+IUSE=""
 RESTRICT="mirror strip"
 
 S="${WORKDIR}/${MY_PN^}/app"

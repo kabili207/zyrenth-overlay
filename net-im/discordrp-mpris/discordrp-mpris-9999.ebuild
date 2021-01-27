@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/dbussy[${PYTHON_USEDEP}]
-	dev-python/pytoml[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
