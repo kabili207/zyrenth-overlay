@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit distutils-r1
 
 DESCRIPTION="GUI for snapper, a tool for Linux filesystem snapshot management"

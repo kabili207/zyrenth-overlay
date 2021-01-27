@@ -20,8 +20,7 @@ RDEPEND="
 	>=dev-python/coloredlogs-10.0[${PYTHON_USEDEP}]
 	>=dev-python/cachetools-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.25.1[${PYTHON_USEDEP}]
-	>=dev-python/pytz-2020.5[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/dataclasses[${PYTHON_USEDEP}]' python3_6)"
+	>=dev-python/pytz-2020.5[${PYTHON_USEDEP}]"
 
 DEPEND="${REDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
