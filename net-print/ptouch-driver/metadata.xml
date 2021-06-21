@@ -6,6 +6,6 @@
 		<name>Amy Nagle</name>
 	</maintainer>
 	<upstream>
-		<remote-id type='bitbucket'>philpem/printer-driver-ptouch</remote-id>
+		<remote-id type='github'>philpem/printer-driver-ptouch</remote-id>
 	</upstream>
 </pkgmetadata>
