@@ -26,5 +26,10 @@ RDEPEND="
 	app-backup/snapper
 	dev-python/dbus-python
 	dev-python/pygobject
-	x11-libs/gtksourceview
+	x11-libs/gtksourceview:3.0
 "
+
+src_prepare() {
+	sed -i 's/Utilities;/Utility;/' ${S}/snapper-gui.desktop
+	default
+}
