@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -69,12 +69,11 @@ src_install() {
 	insinto /opt/displaylink
 	insopts -m0755
 	newins "${FILESDIR}/udev.sh" udev.sh
+	newins "${FILESDIR}/pm-displaylink" suspend.sh
 	if use systemd; then
-		newins "${FILESDIR}/pm-systemd-displaylink" suspend.sh
 		dosym ../../../opt/displaylink/suspend.sh /lib/systemd/system-sleep/displaylink.sh
 		systemd_dounit "${FILESDIR}/dlm.service"
 	else
-		newins "${FILESDIR}/pm-displaylink" suspend.sh
 		dosym ../../../opt/displaylink/suspend.sh /etc/pm/sleep.d/displaylink.sh
 		newinitd "${FILESDIR}/rc-displaylink-1.3" dlm
 	fi
