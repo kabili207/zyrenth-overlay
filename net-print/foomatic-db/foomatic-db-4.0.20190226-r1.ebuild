@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit
-
 DESCRIPTION="Printer information files for foomatic-db-engine to generate ppds"
 HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
 SRC_URI="http://www.openprinting.org/download/foomatic/${PN}-$(ver_rs 2 -).tar.xz"
