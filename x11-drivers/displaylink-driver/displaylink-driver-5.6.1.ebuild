@@ -20,7 +20,7 @@ RESTRICT="fetch bindist"
 DEPEND="app-admin/chrpath
 	app-arch/unzip"
 RDEPEND=">=sys-devel/gcc-6.5.0
-	=x11-drivers/evdi-1.12*
+	>=x11-drivers/evdi-1.12.0
 	virtual/libusb:1
 	>=x11-base/xorg-server-1.17.0
 	!systemd? ( sys-auth/elogind )"
