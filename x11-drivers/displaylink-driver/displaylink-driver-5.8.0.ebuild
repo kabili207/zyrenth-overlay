@@ -1,18 +1,18 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit systemd toolchain-funcs udev
+inherit systemd udev
 
 DESCRIPTION="DisplayLink USB Graphics Software"
 HOMEPAGE="http://www.displaylink.com/downloads/ubuntu"
 SRC_URI="${P}.zip"
-
 LICENSE="DisplayLink-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86 "
 IUSE="systemd"
+PV_EXTRA="63.33"
 
 QA_PREBUILT="/opt/displaylink/DisplayLinkManager"
 RESTRICT="fetch bindist"
@@ -20,37 +20,30 @@ RESTRICT="fetch bindist"
 DEPEND="app-admin/chrpath
 	app-arch/unzip"
 RDEPEND=">=sys-devel/gcc-6.5.0
-	=x11-drivers/evdi-1.7*
+	~x11-drivers/evdi-1.14.1
 	virtual/libusb:1
 	>=x11-base/xorg-server-1.17.0
 	!systemd? ( sys-auth/elogind )"
 
 pkg_nofetch() {
-	einfo "Please download DisplayLink USB Graphics Software for Ubuntu 5.3.zip from"
+	einfo "Please download DisplayLink USB Graphics Software for Ubuntu${PV}-EXE.zip from"
 	einfo "http://www.displaylink.com/downloads/ubuntu"
 	einfo "and rename it to ${P}.zip"
 }
 
 src_unpack() {
 	default
-	sh ./"${PN}"-"${PV}".run --noexec --target "${P}"
+	sh ./"${PN}-${PV}-${PV_EXTRA}".run --noexec --target "${P}"
 }
 
 src_install() {
-	#if [[ ( $(gcc-major-version) -eq 9 && $(gcc-minor-version) -ge 2 ) || $(gcc-major-version) -gt 9 ]]; then
-	MY_UBUNTU_VERSION=1604
-	#else
-	#	MY_UBUNTU_VERSION=1404
-	#fi
-
-	einfo "Using package for Ubuntu ${MY_UBUNTU_VERSION} based on your gcc version: $(gcc-version)"
-
 	case "${ARCH}" in
-		amd64)	MY_ARCH="x64" ;;
-		*)		MY_ARCH="${ARCH}" ;;
+		amd64)	MY_ARCH="x64-ubuntu-1604" ;;
+		x86)	MY_ARCH="x86-ubuntu-1604" ;;
+		arm)	MY_ARCH="arm-linux-gnueabihf" ;;
+		arm64)	MY_ARCH="aarch64-linux-gnu" ;;
 	esac
-
-	DLM="${S}/${MY_ARCH}-ubuntu-${MY_UBUNTU_VERSION}/DisplayLinkManager"
+	DLM="${S}/${MY_ARCH}/DisplayLinkManager"
 
 	dodir /opt/displaylink
 	dodir /var/log/displaylink
@@ -78,12 +71,18 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "The DisplayLinkManager Init is now called dlm"
-	einfo ""
-	einfo "You should be able to use xrandr as follows:"
-	einfo "xrandr --setprovideroutputsource 1 0"
-	einfo "Repeat for more screens, like:"
-	einfo "xrandr --setprovideroutputsource 2 0"
-	einfo "Then, you can use xrandr or GUI tools like arandr to configure the screens, e.g."
-	einfo "xrandr --output DVI-1-0 --auto"
+	udev_reload
+
+	elog "The DisplayLinkManager Init is now called dlm"
+	elog ""
+	elog "You should be able to use xrandr as follows:"
+	elog "xrandr --setprovideroutputsource 1 0"
+	elog "Repeat for more screens, like:"
+	elog "xrandr --setprovideroutputsource 2 0"
+	elog "Then, you can use xrandr or GUI tools like arandr to configure the screens, e.g."
+	elog "xrandr --output DVI-1-0 --auto"
+}
+
+pkg_postrm() {
+	udev_reload
 }
