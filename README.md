@@ -1,4 +1,4 @@
-Gentoo Zyrenth Overlay
+Zyrenth Gentoo Overlay
 ===========================
 
 This overlay contains a random assortment of packages used by the zyrenth webmaster.
@@ -6,8 +6,13 @@ This overlay contains a random assortment of packages used by the zyrenth webmas
 Installation (as root)
 ----------------------
 
+With eselect repository:
 ```
-wget https://raw.githubusercontent.com/kabili207/zyrenth-overlay/master/repositories.xml -O /etc/layman/overlays/zyrenth.xml
+eselect repository enable zyrenth
+```
+
+With layman (deprecated):
+```
 layman -S
 layman -a zyrenth
 ```
