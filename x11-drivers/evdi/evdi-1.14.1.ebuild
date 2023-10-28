@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 MODULE_NAMES="evdi(video:${S}/module)"
 
 #CONFIG_CHECK="~FB_VIRTUAL ~!INTEL_IOMMU"
-CONFIG_CHECK="~FB_VIRTUAL"
+CONFIG_CHECK="~FB_VIRTUAL ~I2C DRM ~USB_SUPPORT USB_ARCH_HAS_HCD"
 
 pkg_setup() {
 	linux-mod_pkg_setup
@@ -30,11 +30,12 @@ src_compile() {
 	linux-mod_src_compile
 	cd "${S}/library"
 	default
-	mv libevdi.so libevdi.so.0
+	#mv libevdi.so libevdi.so.${PV}
 }
 
 src_install() {
 	linux-mod_src_install
-	dolib.so library/libevdi.so.0
-	dosym libevdi.so.0 "/usr/$(get_libdir)/libevdi.so"
+	dolib.so library/libevdi.so.${PV}
+	dosym libevdi.so.${PV} "/usr/$(get_libdir)/libevdi.so.1"
+	dosym libevdi.so.1 "/usr/$(get_libdir)/libevdi.so"
 }
