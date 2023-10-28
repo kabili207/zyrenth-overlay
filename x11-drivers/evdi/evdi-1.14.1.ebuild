@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit linux-mod
 
 DESCRIPTION="Extensible Virtual Display Interface"
 HOMEPAGE="https://github.com/DisplayLink/evdi"
