@@ -3,15 +3,16 @@
 
 EAPI=8
 
-inherit git-r3 autotools
+inherit autotools
 
 DESCRIPTION="Driver for the Brother P-touch series of label printers."
 HOMEPAGE="https://github.com/philpem/printer-driver-ptouch"
-EGIT_REPO_URI="https://github.com/philpem/printer-driver-ptouch"
+MY_PV="9f75468dd4e7e73770bfbafed79a05b3585ca28d"
+SRC_URI="https://github.com/philpem/printer-driver-ptouch/archive/${MY_PV}.tar.gz -> ${PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
@@ -19,6 +20,8 @@ RDEPEND="
 	net-print/foomatic-db-engine"
 
 DEPEND="${RDEPEND} "
+
+S="${WORKDIR}/printer-driver-ptouch-${MY_PV}"
 
 src_prepare() {
 	# Make sure we write the filter to the correct directory
