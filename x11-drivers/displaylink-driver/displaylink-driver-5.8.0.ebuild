@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RESTRICT="fetch bindist"
 DEPEND="app-admin/chrpath
 	app-arch/unzip"
 RDEPEND=">=sys-devel/gcc-6.5.0
-	~x11-drivers/evdi-1.14.1
+	x11-drivers/evdi:0/1.14
 	virtual/libusb:1
 	>=x11-base/xorg-server-1.17.0
 	!systemd? ( sys-auth/elogind )"
