@@ -24,17 +24,14 @@ pkg_setup() {
 }
 
 src_compile() {
-	local modlist=(
-		evdi=video:module
-	)
+	local modlist=( evdi=video:module )
+	local modargs=(	KVER="${KV_FULL}" KDIR="${KV_OUT_DIR}" )
 	linux-mod-r1_src_compile
-	cd "${S}/library"
-	default
+	emake -C library
 }
 
 src_install() {
 	linux-mod-r1_src_install
-	dolib.so library/libevdi.so.${PV}
-	dosym libevdi.so.${PV} "/usr/$(get_libdir)/libevdi.so.1"
-	dosym libevdi.so.1 "/usr/$(get_libdir)/libevdi.so"
+	MYLIBDIR="${EPREFIX}/usr/$(get_libdir)"
+	emake DESTDIR="${ED}" PREFIX="${EPREFIX}" LIBDIR="${MYLIBDIR}" -C library install
 }
