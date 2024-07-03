@@ -1,3 +1,0 @@
-# Amy Nagle <kabi-bugz.gentoo@openmuffin.com> (5 Sep 2019)
-# requires systemd (masked on selinux)
->=app-misc/keyleds-0.8.0
