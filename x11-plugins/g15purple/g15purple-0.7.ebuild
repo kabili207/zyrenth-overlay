@@ -1,9 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit multilib
+EAPI=8
 
 DESCRIPTION="Pidgin plugin that displays incoming messages on a Logitech G15 LCD screen"
 HOMEPAGE="https://github.com/kabili207/g15-purple"
