@@ -12,7 +12,7 @@ LICENSE="DisplayLink-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86 "
 IUSE="systemd"
-PV_EXTRA="63.33"
+PV_EXTRA="17"
 
 QA_PREBUILT="/opt/displaylink/DisplayLinkManager"
 RESTRICT="fetch bindist"
@@ -27,8 +27,8 @@ RDEPEND=">=sys-devel/gcc-6.5.0
 
 pkg_nofetch() {
 	einfo "Please download DisplayLink USB Graphics Software for Ubuntu${PV}-EXE.zip from"
-	einfo "http://www.displaylink.com/downloads/ubuntu"
-	einfo "and rename it to ${P}.zip"
+	einfo "http://www.displaylink.com/downloads/ubuntu and save it to the distfiles folder"
+	einfo "as ${P}.zip"
 }
 
 src_unpack() {
