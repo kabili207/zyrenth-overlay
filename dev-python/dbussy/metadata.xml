@@ -6,6 +6,7 @@
 		<name>Amy Nagle</name>
 	</maintainer>
 	<upstream>
-		<remote-id type='github'>ldo/dbussy</remote-id>
+		<remote-id type="bitbucket">ldo17/dbussy</remote-id>
+		<remote-id type='gitlab'>ldo17/dbussy</remote-id>
 	</upstream>
 </pkgmetadata>

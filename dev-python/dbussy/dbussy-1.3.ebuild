@@ -1,16 +1,17 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=(python3_{9..11})
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=(python3_{12..14})
 
 inherit distutils-r1
 
 DESCRIPTION="Language bindings for libdbus, for Python"
-HOMEPAGE="https://github.com/ldo/dbussy"
+HOMEPAGE="https://gitlab.com/ldo/dbussy https://bitbucket.org/ldo17/dbussy"
 # Source isn't on pypi...
-SRC_URI="https://github.com/ldo/dbussy/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://gitlab.com/ldo/dbussy/-/archive/v${PV}/dbussy-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
