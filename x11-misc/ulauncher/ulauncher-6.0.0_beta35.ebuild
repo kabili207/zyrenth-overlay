@@ -14,11 +14,12 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Feature rich application Launcher for Linux"
 HOMEPAGE="https://github.com/Ulauncher/Ulauncher"
-SRC_URI="https://github.com/Ulauncher/Ulauncher/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Ulauncher/Ulauncher/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+S="${WORKDIR}/${MY_P}"
 IUSE=""
 
 RDEPEND="
@@ -27,13 +28,7 @@ RDEPEND="
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
-	dev-python/lefthook[${PYTHON_USEDEP}]
-	dev-python/pyrefly[${PYTHON_USEDEP}]
-	dev-python/ruff[${PYTHON_USEDEP}]
-	dev-python/rumdl[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
-	dev-python/typos[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
 
-S="${WORKDIR}/${MY_P}"
